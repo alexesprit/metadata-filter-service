@@ -30,7 +30,13 @@ export function getFilterName(urlStr: string): string {
 		throw new Error(`Invalid URL: ${urlStr}`);
 	}
 
-	const lastElement = urlPath.split('/').pop();
+	// Format is /api/:filter
+	const urlPaths = urlPath.split('/');
+	if (urlPaths.length < 3) {
+		throw new Error('Missing filter name in URL');
+	}
+
+	const lastElement = urlPaths.pop();
 	if (lastElement) {
 		return lastElement;
 	}

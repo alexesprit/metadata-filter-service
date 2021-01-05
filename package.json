@@ -4,7 +4,7 @@
   "description": "metadata-filter as a service",
   "private": true,
   "scripts": {
-    "lint": "eslint \"./api/**/*.ts\"",
+    "lint": "eslint \"./{api,page,test}/**/*.{ts,js}\"",
     "test": "alsatian \"./test/**/*.spec.ts\"",
     "format": "prettier --write .",
     "check-format": "prettier --check ."

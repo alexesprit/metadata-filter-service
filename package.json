@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint \"./api/**/*.ts\"",
+    "test": "alsatian \"./test/**/*.spec.ts\"",
     "format": "prettier --write .",
     "check-format": "prettier --check ."
   },
@@ -17,6 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
     "@vercel/node": "^1.8.5",
+    "alsatian": "^3.2.1",
     "eslint": "^7.17.0",
     "eslint-config-web-scrobbler": "^2.1.1",
     "prettier": "^2.2.1",

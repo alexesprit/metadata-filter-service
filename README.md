@@ -70,6 +70,9 @@ Requesting `/api/youtube?track=If%20I%20Get%20High%20(Official%20Video)` will re
 # Run linter
 > npm run lint
 
+# Run tests
+> npm test
+
 # Format files
 > npm run format
 ```

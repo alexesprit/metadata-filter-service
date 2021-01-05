@@ -1,6 +1,6 @@
 import { FilterResult } from './FilterResult';
 
-interface Response {
+export interface Response {
 	status: string;
 }
 

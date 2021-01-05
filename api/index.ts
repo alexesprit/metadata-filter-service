@@ -1,47 +1,16 @@
 import { NowRequest, NowResponse } from '@vercel/node';
+import { processApiRequest } from './ServerlessFunction';
 
-import { getFilter } from './FilterFactory';
-import { filterQuery, getFilterName } from './Helper';
+export default (req: NowRequest, res: NowResponse): void => {
+	const response = processApiRequest(req.url, req.query);
 
-import { FilterQuery } from './model/FilterQuery';
-import { createErrorResponse, createSuccessResponse } from './ResponseFactory';
+	switch (response.status) {
+		case 'success':
+			res.status(200).json(response);
+			break;
 
-export default (request: NowRequest, response: NowResponse): void => {
-	if (!request.url) {
-		response.status(500).json(createErrorResponse('Invalid request URL'));
-		return;
-	}
-
-	let filterName: string;
-	try {
-		filterName = getFilterName(request.url);
-	} catch (err) {
-		if (err instanceof Error) {
-			response.status(500).json(createErrorResponse(err.message));
-		}
-		return;
-	}
-
-	const filter = getFilter(filterName);
-	if (!filter) {
-		response
-			.status(500)
-			.json(createErrorResponse(`Unknown filter name: ${filterName}`));
-		return;
-	}
-
-	const query = request.query;
-	if (Object.keys(query).length === 0) {
-		response.status(500).json(createErrorResponse('Filter query is empty'));
-		return;
-	}
-
-	try {
-		const result = filterQuery(filter, query as FilterQuery);
-		response.status(200).json(createSuccessResponse(result));
-	} catch (err) {
-		if (err instanceof Error) {
-			response.status(500).json(createErrorResponse(err.message));
-		}
+		case 'error':
+			res.status(500).json(response);
+			break;
 	}
 };

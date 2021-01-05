@@ -7,6 +7,7 @@ export function createSuccessResponse(
 	return { status: 'success', data: filterResult };
 }
 
-export function createErrorResponse(message: string): ErrorResponse {
+export function createErrorResponse(err: string | Error): ErrorResponse {
+	const message = err instanceof Error ? err.message : err;
 	return { status: 'error', message: message };
 }

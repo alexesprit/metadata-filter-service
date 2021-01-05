@@ -12,6 +12,11 @@ export default (request: NowRequest, response: NowResponse): void => {
 	}
 
 	const query = request.query;
+	if (Object.keys(query).length === 0) {
+		response.status(500).json({ error: 'Filter query is empty' });
+		return;
+	}
+
 	let filterName: string;
 
 	try {

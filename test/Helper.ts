@@ -11,5 +11,5 @@ export function isErrorResponse(response: Response): response is ErrorResponse {
 export function isSuccesResponse(
 	response: Response
 ): response is SuccessResponse {
-	return response.status === 'error';
+	return response.status === 'success';
 }

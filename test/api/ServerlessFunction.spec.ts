@@ -86,7 +86,7 @@ export class ServerlessFunctionTest {
 		Expect(response.status).toBe('success');
 
 		if (isSuccesResponse(response)) {
-			Expect(response.data.track).toBe('title');
+			Expect(response.data).toEqual({ track: 'title' });
 		}
 	}
 }

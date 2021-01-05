@@ -1,5 +1,5 @@
-import { FilterResult } from './model/FilterResult';
-import { ErrorResponse, SuccessResponse } from './model/Response';
+import type { FilterResult } from './model/FilterResult';
+import type { ErrorResponse, SuccessResponse } from './model/Response';
 
 export function createSuccessResponse(
 	filterResult: FilterResult

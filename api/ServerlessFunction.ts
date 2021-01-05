@@ -1,11 +1,11 @@
-import { NowRequestQuery } from '@vercel/node';
+import type { NowRequestQuery } from '@vercel/node';
 
 import { getFilter } from './FilterFactory';
 import { filterQuery, getFilterName } from './Helper';
-
-import { FilterQuery } from './model/FilterQuery';
-import { Response } from './model/Response';
 import { createErrorResponse, createSuccessResponse } from './ResponseFactory';
+
+import type { FilterQuery } from './model/FilterQuery';
+import type { Response } from './model/Response';
 
 export function processApiRequest(
 	url: string | undefined,

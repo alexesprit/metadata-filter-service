@@ -1,6 +1,7 @@
-import { MetadataFilter } from 'metadata-filter';
-import { FilterResult } from './model/FilterResult';
-import { FilterQuery } from './model/FilterQuery';
+import type { MetadataFilter } from 'metadata-filter';
+
+import type { FilterResult } from './model/FilterResult';
+import type { FilterQuery } from './model/FilterQuery';
 
 export function filterQuery(
 	filter: MetadataFilter,

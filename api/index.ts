@@ -1,4 +1,5 @@
-import { NowRequest, NowResponse } from '@vercel/node';
+import type { NowRequest, NowResponse } from '@vercel/node';
+
 import { processApiRequest } from './ServerlessFunction';
 
 export default (req: NowRequest, res: NowResponse): void => {

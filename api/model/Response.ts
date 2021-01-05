@@ -1,4 +1,4 @@
-import { FilterResult } from './FilterResult';
+import type { FilterResult } from './FilterResult';
 
 export interface Response {
 	status: string;

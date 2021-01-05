@@ -12,7 +12,16 @@ export default (request: NowRequest, response: NowResponse): void => {
 	}
 
 	const query = request.query;
-	const filterName = getFilterName(request.url);
+	let filterName: string;
+
+	try {
+		filterName = getFilterName(request.url);
+	} catch (err) {
+		if (err instanceof Error) {
+			response.status(500).json({ error: err.message });
+		}
+		return;
+	}
 
 	const filter = getFilter(filterName);
 	if (!filter) {

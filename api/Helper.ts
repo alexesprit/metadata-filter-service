@@ -24,11 +24,16 @@ export function filterQuery(
 	return result;
 }
 
-export function getFilterName(url: string): string {
-	const lastElement = url.split('/').pop();
+export function getFilterName(urlStr: string): string {
+	const urlPath = urlStr.split('?').shift();
+	if (!urlPath) {
+		throw new Error(`Invalid URL: ${urlStr}`);
+	}
+
+	const lastElement = urlPath.split('/').pop();
 	if (lastElement) {
 		return lastElement;
 	}
 
-	throw new Error(`Invalid URL: ${url}`);
+	throw new Error(`Invalid URL: ${urlStr}`);
 }

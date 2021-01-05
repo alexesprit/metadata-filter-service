@@ -4,10 +4,11 @@ import { getFilter } from './FilterFactory';
 import { filterQuery, getFilterName } from './Helper';
 
 import { FilterQuery } from './model/FilterQuery';
+import { createErrorResponse, createSuccessResponse } from './ResponseFactory';
 
 export default (request: NowRequest, response: NowResponse): void => {
 	if (!request.url) {
-		response.status(500).json({ error: 'Invalid request URL' });
+		response.status(500).json(createErrorResponse('Invalid request URL'));
 		return;
 	}
 
@@ -16,7 +17,7 @@ export default (request: NowRequest, response: NowResponse): void => {
 		filterName = getFilterName(request.url);
 	} catch (err) {
 		if (err instanceof Error) {
-			response.status(500).json({ error: err.message });
+			response.status(500).json(createErrorResponse(err.message));
 		}
 		return;
 	}
@@ -25,22 +26,22 @@ export default (request: NowRequest, response: NowResponse): void => {
 	if (!filter) {
 		response
 			.status(500)
-			.json({ error: `Unknown filter name: ${filterName}` });
+			.json(createErrorResponse(`Unknown filter name: ${filterName}`));
 		return;
 	}
 
 	const query = request.query;
 	if (Object.keys(query).length === 0) {
-		response.status(500).json({ error: 'Filter query is empty' });
+		response.status(500).json(createErrorResponse('Filter query is empty'));
 		return;
 	}
 
 	try {
 		const result = filterQuery(filter, query as FilterQuery);
-		response.status(200).json(result);
+		response.status(200).json(createSuccessResponse(result));
 	} catch (err) {
 		if (err instanceof Error) {
-			response.status(500).json({ error: err.message });
+			response.status(500).json(createErrorResponse(err.message));
 		}
 	}
 };

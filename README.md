@@ -18,8 +18,16 @@ For example, query for filtering track field is `track=TrackName`. You can put m
 The response is a JSON in the following format:
 
 ```ts
-interface FilterResult {
-	[field: string]: string;
+interface SuccessResponse {
+	status: 'success';
+	data: {
+		[field: string]: string;
+	};
+}
+
+interface ErrorResponse {
+	status: 'error';
+	message: string;
 }
 ```
 
@@ -42,7 +50,12 @@ For example, we want to filter "If I Get High (Official Video)" track name with 
 Requesting `/api/youtube?track=If%20I%20Get%20High%20(Official%20Video)` will return a response with filter result in JSON format.
 
 ```json
-{ "track": "If I Get High" }
+{
+	"status": "success",
+	"data": {
+		"track": "If I Get High"
+	}
+}
 ```
 
 ## Development

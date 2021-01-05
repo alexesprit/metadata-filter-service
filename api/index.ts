@@ -11,14 +11,7 @@ export default (request: NowRequest, response: NowResponse): void => {
 		return;
 	}
 
-	const query = request.query;
-	if (Object.keys(query).length === 0) {
-		response.status(500).json({ error: 'Filter query is empty' });
-		return;
-	}
-
 	let filterName: string;
-
 	try {
 		filterName = getFilterName(request.url);
 	} catch (err) {
@@ -33,6 +26,12 @@ export default (request: NowRequest, response: NowResponse): void => {
 		response
 			.status(500)
 			.json({ error: `Unknown filter name: ${filterName}` });
+		return;
+	}
+
+	const query = request.query;
+	if (Object.keys(query).length === 0) {
+		response.status(500).json({ error: 'Filter query is empty' });
 		return;
 	}
 

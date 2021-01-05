@@ -2,5 +2,10 @@
   "github": {
     "silent": true
   },
-  "routes": [{ "src": "/api/\\w+", "dest": "/api/index.ts" }]
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/", "dest": "/page/index.html" },
+    { "src": "/api/\\w+", "dest": "/api/index.ts" },
+    { "src": "/(.*)", "status": 404, "dest": "/page/not-found.html" }
+  ]
 }

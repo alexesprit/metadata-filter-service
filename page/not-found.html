@@ -1,0 +1,56 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>404 - Not found</title>
+
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+					Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+					'Segoe UI Emoji', 'Segoe UI Symbol';
+			}
+
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+			}
+
+			.status {
+				color: rgb(220, 38, 38);
+				font-size: 20vw;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="status" id="counter">0</div>
+		</div>
+
+		<script>
+			function counter(id, start, end, duration) {
+				if (start === end) {
+					return;
+				}
+
+				const range = end - start;
+				let current = start;
+				const increment = end > start ? 4 : -4;
+				const stepTime = Math.abs(Math.floor((duration * 4) / range));
+				const obj = document.getElementById(id);
+				const timer = setInterval(function () {
+					current += increment;
+					obj.textContent = current.toString().padStart(3, '0');
+
+					if (current == end) {
+						clearInterval(timer);
+					}
+				}, stepTime);
+			}
+
+			counter('counter', 0, 404, 200);
+		</script>
+	</body>
+</html>

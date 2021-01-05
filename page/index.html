@@ -1,0 +1,131 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>metadata-filter</title>
+
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="flex flex-col h-full">
+		<header class="text-gray-700 body-font">
+			<div class="container my-12 mx-auto lg:px-4">
+				<div class="flex flex-col w-full mb-6 text-center">
+					<h1
+						class="mb-6 text-4xl font-semibold tracking-tighter text-red-600 sm:text-6xl title-font"
+					>
+						metadata-filter
+					</h1>
+					<p
+						class="mx-auto text-base font-medium leading-relaxed text-gray-700 lg:w-1/2"
+					>
+						A module for cleaning up artist, album, and song names.
+					</p>
+				</div>
+				<div class="flex justify-center">
+					<a
+						href="https://github.com/web-scrobbler/metadata-filter"
+						class="inline-flex items-center px-4 py-2 font-semibold text-white transition duration-300 ease-in-out transform rounded-lg shadow-xl bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none"
+					>
+						GitHub
+					</a>
+					<a
+						href="https://www.npmjs.com/package/metadata-filter"
+						class="inline-flex items-center px-4 py-2 ml-4 font-semibold text-white transition duration-300 ease-in-out transform rounded-lg shadow-xl bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none"
+					>
+						NPM
+					</a>
+					<a
+						href="https://github.com/web-scrobbler/metadata-filter#readme"
+						class="inline-flex items-center px-4 py-2 ml-4 font-semibold text-white transition duration-300 ease-in-out transform rounded-lg shadow-xl bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none"
+					>
+						Docs
+					</a>
+					<a
+						href="https://github.com/alexesprit/metadata-filter-service#readme"
+						class="inline-flex items-center px-4 py-2 ml-4 font-semibold text-white transition duration-300 ease-in-out transform rounded-lg shadow-xl bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none"
+					>
+						Service
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="flex-1 text-gray-700 body-font">
+			<div class="container mx-auto">
+				<div
+					class="flex flex-col w-full px-8 pt-6 pb-8 mx-auto border rounded-lg lg:w-2/6 md:w-1/2"
+				>
+					<h1
+						class="mb-2 font-semibold tracking-tight text-2xl text-red-600 title-font"
+					>
+						Live demo
+					</h1>
+					<div class="relative">
+						<label
+							for="input-text"
+							class="text-sm leading-7 text-gray-600"
+						>
+							Song/artist/album name to filter
+						</label>
+						<input
+							type="input"
+							id="input-text"
+							spellcheck="false"
+							placeholder="Input text"
+							class="w-full px-4 py-2 mb-4 mr-4 text-base bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"
+						/>
+					</div>
+					<div class="relative mb-4">
+						<label class="block">
+							<label
+								for="filter"
+								class="text-sm leading-7 text-gray-600"
+							>
+								Filter
+							</label>
+							<select
+								id="filter"
+								class="block w-full px-4 py-2 bg-gray-100 border-transparent rounded-lg focus:border-gray-500 focus:bg-white focus:ring-0"
+							>
+								<option>Spotify</option>
+								<option>YouTube</option>
+							</select>
+						</label>
+					</div>
+					<button
+						id="filter-button"
+						class="px-8 py-2 font-semibold text-white transition duration-300 ease-in-out transform rounded-lg shadow-xl bg-red-600 hover:bg-red-700 focus:shadow-outline focus:outline-none"
+					>
+						Filter!
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<footer class="text-gray-700 border-t body-font">
+			<div class="bg-gray-900">
+				<div
+					class="container flex flex-col flex-wrap px-5 py-6 mx-auto w-full"
+				>
+					<p class="text-sm text-center text-gray-200">
+						Made with ❤️ by
+						<a
+							href="https://github.com/web-scrobbler"
+							class="hover:text-gray-300"
+							>Web Scrobbler Team</a
+						>
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<script
+			defer
+			src="https://unpkg.com/metadata-filter@latest/dist/filter.min.js"
+		></script>
+		<script defer src="/page/index.js"></script>
+	</body>
+</html>

@@ -5,13 +5,6 @@ import { processApiRequest } from './ServerlessFunction';
 export default (req: NowRequest, res: NowResponse): void => {
 	const response = processApiRequest(req.url, req.query);
 
-	switch (response.status) {
-		case 'success':
-			res.status(200).json(response);
-			break;
-
-		case 'error':
-			res.status(500).json(response);
-			break;
-	}
+	const responseCode = response.status === 'error' ? 500 : 200;
+	res.status(responseCode).json(response);
 };

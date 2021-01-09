@@ -1,5 +1,3 @@
-import type { NowRequestQuery } from '@vercel/node';
-
 import { getFilter } from './FilterFactory';
 import { filterQuery, getFilterName } from './Helper';
 import { createErrorResponse, createSuccessResponse } from './ResponseFactory';
@@ -9,7 +7,7 @@ import type { Response } from './model/Response';
 
 export function processApiRequest(
 	url: string | undefined,
-	query: NowRequestQuery
+	query: FilterQuery
 ): Response {
 	if (!url) {
 		return createErrorResponse('Invalid request URL');
@@ -32,7 +30,7 @@ export function processApiRequest(
 	}
 
 	try {
-		const result = filterQuery(filter, query as FilterQuery);
+		const result = filterQuery(filter, query);
 		return createSuccessResponse(result);
 	} catch (err) {
 		return createErrorResponse(err);

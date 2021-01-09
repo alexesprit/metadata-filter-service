@@ -49,7 +49,7 @@ export class ServerlessFunctionTest {
 
 	@Test('should return error when filter unknown field')
 	testFilteringInvalidField(): void {
-		const response = processApiRequest('/api/youtube?foo=bar', {
+		const response = processApiRequest('/api/youtube', {
 			foo: 'bar',
 		});
 
@@ -60,7 +60,7 @@ export class ServerlessFunctionTest {
 
 	@Test('should return success response')
 	testFilteringValidField(): void {
-		const response = processApiRequest('/api/youtube?track=title', {
+		const response = processApiRequest('/api/youtube', {
 			track: 'title',
 		});
 

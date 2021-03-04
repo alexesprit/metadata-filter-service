@@ -7,7 +7,7 @@
     "lint": "eslint \"./{api,page,test}/**/*.{ts,js}\"",
     "test": "alsatian \"./test/**/*.spec.ts\"",
     "format": "prettier --write .",
-    "check-format": "prettier --check ."
+    "format:check": "prettier --check ."
   },
   "author": "Alexey <alex.esprit@gmail.com>",
   "license": "MIT",
